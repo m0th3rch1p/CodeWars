@@ -27,5 +27,11 @@ Don't forget to convert the percent parameter as a percentage in the body of you
 */
 
 function nbYear(p0, percent, aug, p) {
-    // your code
+  let pn = p0;
+  let a = 0;
+  while (p0 < p) {
+    a++;
+    p0 = Math.floor(p0 + (p0 * percent) / 100 + aug);
+  }
+  return a;
 }
