@@ -9,28 +9,24 @@ The maximum time never exceeds 359999 (99:59:59)
 You can find some examples in the test fixtures.
 */
 
-function humanReadable (seconds) {
-    let arr = []
-    arr.push(Math.floor(seconds / 3600));
-    arr.push(Math.floor((seconds / 60) % 60));
-    arr.push(seconds % 60);
- for (let i = 0; i < arr.length; i++) {
+function humanReadable(seconds) {
+  let arr = [];
+  arr.push(Math.floor(seconds / 3600));
+  arr.push(Math.floor((seconds / 60) % 60));
+  arr.push(seconds % 60);
+  for (let i = 0; i < arr.length; i++) {
     if (String(arr[i]).length === 1) {
-        arr[i] = "0"+String(arr[i]);
+      arr[i] = "0" + String(arr[i]);
     }
- }
-    return arr.join(":");
   }
+  return arr.join(":");
+}
 
-  // Improvement
-  function secondsToHumanReadable(seconds) {
-    let hours = Math.floor(seconds / 3600);
-    let minutes = Math.floor((seconds % 3600) / 60);
-    let remainingSeconds = seconds % 60;
-  
-    let formattedHours = ("0" + hours).slice(-2);
-    let formattedMinutes = ("0" + minutes).slice(-2);
-    let formattedSeconds = ("0" + remainingSeconds).slice(-2);
-  
-    return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
-  }
+// Improvement
+function humanReadable(seconds) {
+  let formattedHours = ("0" + Math.floor(seconds / 3600)).slice(-2);
+  let formattedMinutes = ("0" + Math.floor((seconds % 3600) / 60)).slice(-2);
+  let formattedSeconds = ("0" + (seconds % 60)).slice(-2);
+
+  return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+}
