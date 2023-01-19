@@ -24,9 +24,9 @@ function humanReadable(seconds) {
 
 // Improvement
 function humanReadable(seconds) {
-  let formattedHours = ("0" + Math.floor(seconds / 3600)).slice(-2);
-  let formattedMinutes = ("0" + Math.floor((seconds % 3600) / 60)).slice(-2);
-  let formattedSeconds = ("0" + (seconds % 60)).slice(-2);
+  let hours = ("0" + Math.floor(seconds / 3600)).slice(-2);
+  let minutes = ("0" + Math.floor((seconds % 3600) / 60)).slice(-2);
+  let seconds = ("0" + (seconds % 60)).slice(-2);
 
-  return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+  return `${hours}:${minutes}:${seconds}`;
 }
