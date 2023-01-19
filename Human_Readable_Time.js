@@ -26,7 +26,7 @@ function humanReadable(seconds) {
 function humanReadable(seconds) {
   let hours = ("0" + Math.floor(seconds / 3600)).slice(-2);
   let minutes = ("0" + Math.floor((seconds % 3600) / 60)).slice(-2);
-  let seconds = ("0" + (seconds % 60)).slice(-2);
+  let Seconds = ("0" + (seconds % 60)).slice(-2);
 
-  return `${hours}:${minutes}:${seconds}`;
+  return `${hours}:${minutes}:${Seconds}`;
 }
