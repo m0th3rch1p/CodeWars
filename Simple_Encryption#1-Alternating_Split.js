@@ -41,3 +41,26 @@ function encrypt(text, n) {
     }
     return encryptedText;
   }
+
+/*************************************************************************************************************************************************
+ * Improvement by z3r0
+ */
+
+function encrypt(text, n) {
+  if (!text || n <= 0) return text;
+  let cypherTxt=[[...text],"",""];
+  for (let j=0; j<n; j++) {
+      cypherTxt[1]="";
+      cypherTxt[2]="";
+      for (let i=0; i<[...text].length; i++) {
+          if (i%2 === 0){
+              cypherTxt[2]+=cypherTxt[0][i];
+          } else {
+              cypherTxt[1]+=cypherTxt[0][i];
+          }
+          
+      }
+      cypherTxt[0]=cypherTxt[1] + cypherTxt[2]
+  }
+  return cypherTxt[1] + cypherTxt[2]
+}
