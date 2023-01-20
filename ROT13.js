@@ -22,3 +22,19 @@ function rot13(message) {
   
     return ciphertxt;
   }
+
+  // Improvement
+  function rot13(message) {
+    let ciphertxt = "";
+    for (var i = 0; i < message.length; i++) {
+      if (message.charCodeAt(i) >= 65 && message.charCodeAt(i) <= 90) {
+        ciphertxt += String.fromCharCode((message.charCodeAt(i) - 65 + 13) % 26 + 65);
+      } else if (message.charCodeAt(i) >= 97 && message.charCodeAt(i) <= 122) {
+        ciphertxt += String.fromCharCode((message.charCodeAt(i) - 97 + 13) % 26 + 97);
+      } else {
+        ciphertxt += message[i];
+      }
+    }
+    return ciphertxt;
+  }
+  
