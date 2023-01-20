@@ -16,37 +16,6 @@ If the string S is an empty value or the integer N is not positive, return the f
 */
 
 function encrypt(text, n) {
-    for (let i = 0; i < n; i++) {
-      let even = "";
-      let odd = "";
-      for (let j = 0; j < text.length; j++) {
-        if (j % 2 === 0) {
-          even += text[j];
-        } else {
-          odd += text[j];
-        }
-      }
-      text = odd + even;
-    }
-    return text;
-  }
-  
-  function decrypt(encryptedText, n) {
-    for (let i = 0; i < n; i++) {
-      let newText = "";
-      for (let j = 0; j < Math.ceil(encryptedText.length / 2); j++) {
-        newText += encryptedText[j] + encryptedText[j + Math.ceil(encryptedText.length / 2)];
-      }
-      encryptedText = newText;
-    }
-    return encryptedText;
-  }
-
-/*************************************************************************************************************************************************
- * Improvement by z3r0
- */
-
-function encrypt(text, n) {
   if (!text || n <= 0) return text;
   let cypherTxt=[[...text],"",""];
   for (let j=0; j<n; j++) {
@@ -63,4 +32,28 @@ function encrypt(text, n) {
       cypherTxt[0]=cypherTxt[1] + cypherTxt[2]
   }
   return cypherTxt[1] + cypherTxt[2]
+}
+
+function decrypt(encryptedText, n) {
+  if (!encryptedText || n <= 0) return encryptedText;
+  let dcryptTxt = [[...encryptedText], ""];
+  let check = 0;
+  for (let j = 0; j < n; j++) {
+      dcryptTxt[1] = "";
+      if (dcryptTxt[0].length % 2 !== 0) {
+          dcryptTxt[1] += dcryptTxt[0][(dcryptTxt[0].length - 1) / 2];
+          check = 1;
+      }
+      for (let i = 0; i < Math.floor(dcryptTxt[0].length / 2); i++) {
+          if (check == 1) {
+              dcryptTxt[1] += dcryptTxt[0][i];
+              dcryptTxt[1] += dcryptTxt[0][i + (dcryptTxt[0].length + 1) / 2];
+          } else {
+              dcryptTxt[1] += dcryptTxt[0][i + (dcryptTxt[0].length) / 2];
+              dcryptTxt[1] += dcryptTxt[0][i];
+          }
+      }
+      dcryptTxt[0] = dcryptTxt[1];
+  }
+  return dcryptTxt[0];
 }
