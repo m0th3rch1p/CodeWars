@@ -15,3 +15,29 @@ Together with the encryption function, you should also implement a decryption fu
 If the string S is an empty value or the integer N is not positive, return the first argument without changes.
 */
 
+function encrypt(text, n) {
+    for (let i = 0; i < n; i++) {
+      let even = "";
+      let odd = "";
+      for (let j = 0; j < text.length; j++) {
+        if (j % 2 === 0) {
+          even += text[j];
+        } else {
+          odd += text[j];
+        }
+      }
+      text = odd + even;
+    }
+    return text;
+  }
+  
+  function decrypt(encryptedText, n) {
+    for (let i = 0; i < n; i++) {
+      let newText = "";
+      for (let j = 0; j < Math.ceil(encryptedText.length / 2); j++) {
+        newText += encryptedText[j] + encryptedText[j + Math.ceil(encryptedText.length / 2)];
+      }
+      encryptedText = newText;
+    }
+    return encryptedText;
+  }
